@@ -1,0 +1,31 @@
+
+
+
+
+class Solution {
+public:
+    void rev(int s, int e, vector<int> &nums){
+        while(s<e){
+            swap(nums[s], nums[e]);
+            s++;
+            e--;
+        }
+
+    }
+    void rotate(vector<int>& nums, int k) {
+        int n = nums.size();
+        
+        if(k>=n)k = k%n;
+        if(k==0) return;
+
+        int pivot = n-k;
+
+
+        rev(0,pivot -1,nums);
+        rev(pivot, n-1,nums);
+        rev(0,n-1,nums);
+
+
+        
+    }
+};
