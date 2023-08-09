@@ -1,0 +1,46 @@
+class Solution {
+public:
+    unordered_map<char,string> map;
+
+    bool check(unordered_map<char,string> &map, string target){
+        for(auto i : map){
+            if(i.second == target) return false;
+        }
+
+        return true;
+    }
+    bool wordPattern(string pattern, string s) {
+        
+
+        vector<string> str;
+        int n = 0;
+        string curr = "";
+        while(n<s.length()){
+            if(s[n] != ' '){
+                curr = curr + s[n];
+            }
+           else if(s[n] == ' '){
+                str.push_back(curr);
+                
+            
+                curr ="";
+            }
+
+            n++;
+        }
+        str.push_back(curr);
+        if(pattern.length() != str.size()) return false;
+        for(int i=0;i<pattern.length();i++){
+            if(map.find(pattern[i]) == map.end()){
+                if(check(map, str[i])) map[pattern[i]] = str[i];
+                else return false;
+            }
+            else{
+                if(map[pattern[i]] != str[i]) return false;
+            }
+        }
+
+        return true;
+        
+    }
+};

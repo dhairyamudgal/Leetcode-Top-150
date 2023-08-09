@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        int j=1;
+
+        while(j<10000){
+
+        if(n==1) return true;
+        vector<int> digits;
+        while(n > 0){
+            
+            digits.push_back(n%10);
+            n = n/10;
+        }
+
+        int curr = 0;
+        for(int i=0;i<digits.size();i++){
+             curr += (digits[i] * digits[i]);
+        }
+        n= curr;
+        j++;
+        
+        }
+
+        return false;
+    }
+
+    
+};
