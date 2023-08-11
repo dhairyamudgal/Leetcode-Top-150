@@ -1,0 +1,35 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n = s.length();
+        string ans = "";
+        
+        string curr = "";
+        int i=0;
+        while(i<n){
+            while(i <n && s[i] == ' ') {
+                i++;
+            }
+            while(i<n && s[i] != ' '){
+                curr = curr + s[i];
+                i++;
+            }
+            ans = curr + ans;
+            ans =  " " + ans;
+
+            curr = "";
+
+        }
+        i=0;
+        while(i< ans.length()){
+            if(ans[i] == ' '){
+                i++;
+            }
+            else break;
+            
+        }
+
+        ans.erase(0, i);
+        return ans;
+    }
+};
